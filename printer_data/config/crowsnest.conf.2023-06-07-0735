@@ -1,0 +1,40 @@
+#### crowsnest.conf
+#### This is mainsail / MainsailOS default config.
+#### See:
+#### https://github.com/mainsail-crew/crowsnest/blob/master/README.md
+#### for details to configure to your needs.
+
+
+#####################################################################
+####                                                            #####
+####      Information about ports and according URL's           #####
+####                                                            #####
+#####################################################################
+####                                                            #####
+####    Port 8080 equals /webcam/?action=[stream/snapshot]      #####
+####    Port 8081 equals /webcam2/?action=[stream/snapshot]     #####
+####    Port 8082 equals /webcam3/?action=[stream/snapshot]     #####
+####    Port 8083 equals /webcam4/?action=[stream/snapshot]     #####
+####                                                            #####
+#####################################################################
+
+
+[crowsnest]
+log_path: ~/printer_data/logs/crowsnest.log
+log_level: verbose                      # Valid Options are quiet/verbose/debug
+delete_log: true                        # Deletes log on every restart, if set to true
+
+[cam logi]
+#mode: mjpg
+mode: ustreamer
+custom_flags: -r 1280x960 -f 10 -q 65
+port: 8080
+device: /dev/video0
+#resolution: 1920x1080
+#resolution: 1600x896
+resolution: 1280x960
+#resolution: 1280x720
+#resolution: 960x540
+max_fps: 10
+#v4l2ctl: focus_auto=0,focus_absolute=55
+#v4l2ctl: video_bitrate=9000000,compression_quality=65,video_bitrate_mode=1, focus_auto=0,focus_absolute=30
